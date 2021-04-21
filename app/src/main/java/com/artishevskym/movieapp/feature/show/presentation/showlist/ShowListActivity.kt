@@ -1,19 +1,18 @@
-package com.artishevskym.movieapp.home.view
+package com.artishevskym.movieapp.feature.show.presentation.showlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.artishevskym.movieapp.databinding.HomeActivityBinding
-import com.artishevskym.movieapp.home.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class ShowListActivity : AppCompatActivity() {
 
     private lateinit var binding: HomeActivityBinding
-    private val viewModel: MovieViewModel by viewModels()
-    private lateinit var movieAdapter: MovieAdapter
+    private val viewModel: ShowListViewModel by viewModels()
+    private lateinit var movieAdapter: ShowAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,23 +24,23 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupRv() {
-        movieAdapter = MovieAdapter()
+        movieAdapter = ShowAdapter()
 
         binding.recyclerView.apply {
             adapter = movieAdapter
-            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@ShowListActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
 
         binding.recyclerView2.apply {
             adapter = movieAdapter
-            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@ShowListActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
 
         binding.recyclerView3.apply {
             adapter = movieAdapter
-            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@ShowListActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
         }
 

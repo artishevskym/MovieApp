@@ -1,7 +1,6 @@
-package com.artishevskym.movieapp.home.di
+package com.artishevskym.movieapp.feature.show
 
-import com.artishevskym.movieapp.home.model.api.Constants
-import com.artishevskym.movieapp.home.model.api.TvMazeApi
+import com.artishevskym.movieapp.feature.show.data.network.service.ShowRetrofitService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,15 +14,15 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    fun provideBaseUrl() = Constants.BASE_URL
+    fun provideBaseUrl() = Config.BASE_URL
 
     @Provides
     @Singleton
-    fun provideRetrofitInstance(BASE_URL: String): TvMazeApi =
+    fun provideRetrofitInstance(BASE_URL: String): ShowRetrofitService =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(TvMazeApi::class.java)
+            .create(ShowRetrofitService::class.java)
 
 }

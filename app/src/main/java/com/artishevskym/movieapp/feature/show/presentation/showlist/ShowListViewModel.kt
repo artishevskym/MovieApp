@@ -1,21 +1,21 @@
-package com.artishevskym.movieapp.home.viewmodel
+package com.artishevskym.movieapp.feature.show.presentation.showlist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.artishevskym.movieapp.home.model.models.MovieItem
-import com.artishevskym.movieapp.home.model.repository.MovieRepository
+import com.artishevskym.movieapp.feature.show.data.network.model.ShowJson
+import com.artishevskym.movieapp.feature.show.data.ShowRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieViewModel
-@Inject constructor(private val repository: MovieRepository) : ViewModel() {
-    private val _response = MutableLiveData<List<MovieItem>>()
-    val responseTvShow: LiveData<List<MovieItem>>
+class ShowListViewModel
+@Inject constructor(private val repository: ShowRepositoryImpl) : ViewModel() {
+    private val _response = MutableLiveData<List<ShowJson>>()
+    val responseTvShow: LiveData<List<ShowJson>>
         get() = _response
 
     init {

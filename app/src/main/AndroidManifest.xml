@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApp">
-        <activity android:name=".home.view.HomeActivity">
+        <activity android:name="com.artishevskym.movieapp.feature.show.presentation.showlist.ShowListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

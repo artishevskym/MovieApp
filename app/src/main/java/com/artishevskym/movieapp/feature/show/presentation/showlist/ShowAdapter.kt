@@ -1,4 +1,4 @@
-package com.artishevskym.movieapp.home.view
+package com.artishevskym.movieapp.feature.show.presentation.showlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,26 +7,26 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.artishevskym.movieapp.databinding.MovieListItemBinding
-import com.artishevskym.movieapp.home.model.models.MovieItem
+import com.artishevskym.movieapp.feature.show.data.network.model.ShowJson
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.TvShowListItemHolder>() {
+class ShowAdapter : RecyclerView.Adapter<ShowAdapter.TvShowListItemHolder>() {
 
     inner class TvShowListItemHolder(val binding: MovieListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private val diffCallback = object : DiffUtil.ItemCallback<MovieItem>() {
-        override fun areItemsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
+    private val diffCallback = object : DiffUtil.ItemCallback<ShowJson>() {
+        override fun areItemsTheSame(oldItem: ShowJson, newItem: ShowJson): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: MovieItem, newItem: MovieItem): Boolean {
+        override fun areContentsTheSame(oldItem: ShowJson, newItem: ShowJson): Boolean {
             return oldItem == newItem
         }
     }
 
     private val differ = AsyncListDiffer(this, diffCallback)
 
-    var tvShows: List<MovieItem>
+    var tvShows: List<ShowJson>
         get() = differ.currentList
         set(value) {
             differ.submitList(value)
