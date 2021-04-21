@@ -19,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         setupRv()
     }
@@ -27,6 +28,18 @@ class HomeActivity : AppCompatActivity() {
         movieAdapter = MovieAdapter()
 
         binding.recyclerView.apply {
+            adapter = movieAdapter
+            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+        }
+
+        binding.recyclerView2.apply {
+            adapter = movieAdapter
+            layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+        }
+
+        binding.recyclerView3.apply {
             adapter = movieAdapter
             layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
             setHasFixedSize(true)
